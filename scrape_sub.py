@@ -3,8 +3,6 @@ import argparse
 import os
 import pandas as pd
 
-#TODO: filter based on date
-
 def handle_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', '--num_posts', help='number of posts to scrape comments from, for all choose -1', default=25)
@@ -20,11 +18,11 @@ if not os.path.isfile(args['outfile']):
     f = open(args['outfile'], 'w')
     f.close()
 
-r = praw.Reddit(client_id='gyc27_K63myg4A',
-                client_secret='9B6TDDbIP0TFg6UP_KV5L2CB7qY',
-                username='lg6596',
-                password='pekoe1234',
-                user_agent='scraper by /u/lg6596')
+r = praw.Reddit(client_id='reddit-client-id',
+                client_secret='reddit-client-secret',
+                username='username',
+                password='password',
+                user_agent='small message describing bot')
 
 sub = r.subreddit(args['subreddit'])
 post_generator = sub.top(limit=int(args['num_posts']))
